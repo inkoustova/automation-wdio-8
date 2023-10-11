@@ -2,7 +2,8 @@ export const config = {
     // automationProtocol: 'devtools',
     runner: 'local',
     specs: [
-        './test/specs/*.e2e.js'
+        //'./test/specs/*.e2e.js'
+        './test/specs/homework/*.e2e.js'
     ],
     exclude: [
         // './test/specs/examples/**/*.js'
@@ -29,7 +30,7 @@ export const config = {
         'goog:chromeOptions': {
             args: [
                 '--window-size=1920,1080',
-                // '--headless',
+                '--headless',//(okno browseru při pouziti headless nevyskakuje)
                 '--no-sandbox',
                 '--disable-gpu',
                 '--disable-setuid-sandbox',
@@ -44,7 +45,7 @@ export const config = {
             ]
         }
     }],
-    logLevel: 'silent',
+    logLevel:'silent',//info,debug vypisuje detaily do terminalu
     bail: 0,
     baseUrl: 'https://team8-2022brno.herokuapp.com',
     waitforTimeout: 10000,
