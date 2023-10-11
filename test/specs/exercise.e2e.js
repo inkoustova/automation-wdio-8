@@ -13,8 +13,8 @@ describe('Czechitas Login Page', async () => {
         const windowSize = await browser.getWindowSize();
         console.log(windowSize);
 
-        const allCookies = await browser.getCookies();
-        console.log(allCookies);
+        //const allCookies = await browser.getCookies();//tohle odlogovava a pak to haze issues s xrf tokenem
+        //console.log(allCookies);
         
         await browser.saveScreenshot('login_page.png');
 

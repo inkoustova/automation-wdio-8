@@ -29,7 +29,7 @@ export const config = {
         'goog:chromeOptions': {
             args: [
                 'window-size=1920,1080',
-                '--headless',//(okno browseru při pouziti headless nevyskakuje)
+                //'--headless',//(okno browseru při pouziti headless nevyskakuje)
                 '--no-sandbox',
                 '--disable-gpu',
                 '--disable-setuid-sandbox',
@@ -46,7 +46,7 @@ export const config = {
     }],
     logLevel:'silent',//info,debug vypisuje detaily do terminalu
     bail: 0,
-    baseUrl: 'https://team8-2022brno.herokuapp.com',
+    baseUrl:'https://team8-2022brno.herokuapp.com',
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
