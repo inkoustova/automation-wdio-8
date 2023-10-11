@@ -18,6 +18,7 @@ describe('Czechitas Login Page', async () => {
         
         await browser.saveScreenshot('login_page.png');
 
+
         await browser.pause(5000);
 
     });
