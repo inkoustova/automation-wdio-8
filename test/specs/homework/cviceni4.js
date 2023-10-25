@@ -1,45 +1,38 @@
-import {username, password} from './fixtures.js'
-
 describe('Login page', async () => {
 
-    it('cliks on Prihlasit and make sure you are not logged in', async () => {
+    it('should open page and create screenshot, lesson 1', async () => {
 
         await browser.reloadSession();
 
         await browser.url('/prihlaseni');
-        const PrihlasitButton = $('.btn-primary')
+
+        await browser.saveScreenshot('login_page.png');
+
         await browser.pause(500);//.pause jen kdyz clovek tvori testy, nepouzivat pak ve finalnim testu
 
     });
+});
 
-    it('log in with incorrect password', async () => {
-
-        const password2 = 'Czechitas666'
- 
-         const idEmailSelector = $('#email');
-         const idPasswordSelector = $('#password');
-         const PrihlasitButton = $('.btn-primary')
- 
-         await idEmailSelector.setValue(username);
-         await idPasswordSelector.setValue(password2);
-         await PrihlasitButton.click();
- 
-         //await browser.pause(500);
- 
-     });
-
-    it('key in correct data and log in', async () => {
+describe('Registrace page', async () => {
+    it('should open and return selectors, lesson 2', async () => {
 
         //await browser.reloadSession();
-        //await browser.url('/registrace');
+        await browser.url('/registrace');
+
+        const idNameSelector = $('#name');
+        console.log(await idNameSelector.getHTML());
 
         const idEmailSelector = $('#email');
-        const idPasswordSelector = $('#password');
-        const PrihlasitButton = $('.btn-primary')
+        console.log(await idEmailSelector.getHTML());
 
-        await idEmailSelector.setValue(username);
-        await idPasswordSelector.setValue(password);
-        await PrihlasitButton.click();
+        const idPasswordSelector = $('#password');
+        console.log(await idPasswordSelector.getHTML());
+
+        const idPasswordConfirmSelector = $('#password-confirm');
+        console.log(await idPasswordConfirmSelector.getHTML());
+
+        const classSelector = $('.btn-primary');
+        console.log(await classSelector.getHTML());
 
         //await browser.pause(500);
 
@@ -81,4 +74,25 @@ describe('Login page', async () => {
  
      });
      
+     it('should check that registration was correct, lesson 5', async () => {
+
+        // await browser.reloadSession();
+         await browser.url('/registrace');
+         
+       
+ 
+         //await browser.pause(500);
+ 
+     });
+
+     it('registration should failed with incorrect password and already registered email, lesson 4', async () => {
+
+        // await browser.reloadSession();
+         await browser.url('/registrace');
+         
+       
+ 
+         //await browser.pause(500);
+ 
+     });
 });
