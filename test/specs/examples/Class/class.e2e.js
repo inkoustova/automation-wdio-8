@@ -1,5 +1,4 @@
-
-describe('Czechitas Login Page', async () => {
+describe ('ClassExcercise', async () => {
 
     it('should open login page', async () => {
 
