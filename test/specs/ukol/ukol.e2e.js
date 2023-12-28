@@ -1,13 +1,13 @@
-describe('Variace na registrace', async () => {
+describe('Registration page', async () => {
 
     beforeEach (async () => {
-        console.log('bezi pred kazdym testem')
+        console.log('runs prior each test')
         await browser.url('/registrace')
     });
    
-    it('1.test - Validní registrace', async () => {
+    it('should create valid registration', async () => {
 
-        console.log('1.test - Validní registrace')
+        console.log('1.test - Valid registration created')
 
         const unique= Date.now();
         const name = 'T'+unique + 'Test'
@@ -33,8 +33,6 @@ describe('Variace na registrace', async () => {
         const currentUser = $('.navbar-right').$('strong').getText()
         await expect(await userNameDropdown.getText()).toEqual(name)
         console.log(await currentUser);
-
-        // assert we are logged in, without it, the test would be invalid
         
         let user =userNameDropdown.getText();
             if(user=name) {
@@ -60,12 +58,13 @@ describe('Variace na registrace', async () => {
        
      });
 
-     it('2. test - nevalidní registrace - použitý email', async () => {
-        console.log('2. test - nevalidní registrace - použitý email')
-         await browser.url('/registrace');
-        const name = 'Lilie Liliovita'
-        const email = 'lilie@seznam.cz'
-        const password2 = 'Czechitas666'
+     it('should return error as email is already registered', async () => {
+        console.log('2. test - invalid registration - already registered email')
+
+        await browser.url('/registrace');
+        const name = 'Lišák Admin'
+        const email = 'da-app.admin@czechitas.cz'
+        const password2 = 'Czechitas123'
      
         const idNameSelector = $('#name');
         const idEmailSelector = $('#email');
@@ -81,14 +80,13 @@ describe('Variace na registrace', async () => {
         await SubmitButton.click();
         
         $('.invalid-feedback').waitForDisplayed;
-        //const currentUser = $('.navbar-right').$('.invalid-feedback').getText()
         console.log(await error.getText());
-        //await browser.pause(500);
+        
  
      });
 
-     it('registrace s nevalidnim heslem', async () => {
-        console.log('treti test')
+     it('should return error for invalid password used', async () => {
+        console.log('3. test - invalid registration - invalid password used')
         await browser.url('/registrace');
          
         const unique= Date.now();
@@ -110,9 +108,8 @@ describe('Variace na registrace', async () => {
         await SubmitButton.click();
       
         $('.invalid-feedback').waitForDisplayed;
-        //const currentUser = $('.navbar-right').$('.invalid-feedback').getText()
         console.log(await error.getText());
-        //await browser.pause(500);
+        
     });
      
 });
