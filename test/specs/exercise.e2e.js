@@ -2,21 +2,17 @@ import {username, password} from './fixtures.js'
 // import LoginPage from '../pageobjects/login.page'
 // import ApplicationsPage from '../pageobjects/applications.page'
 
-describe ('ClassExcercise', async () => {
+describe ('Login page', async () => {
 
     it('should open login page', async () => {
 
-        
-
         await browser.reloadSession();
-
         await browser.url('/prihlaseni');
         
         const loginButton = $('.btn-primary');
         await loginButton.click();
+        console.log('Vyplňte přihlašovací údaje');
 
-        const toastMessage = $('.toast-message');
-        console.log('Error: ' + await toastMessage.getText());
 
     });
 
@@ -35,7 +31,7 @@ describe ('ClassExcercise', async () => {
 
     });
 
-    it('log in with correct details', async () => {
+   it('log in with correct details', async () => {
 
         //await browser.reloadSession();
         await browser.url('/prihlaseni');
@@ -49,9 +45,14 @@ describe ('ClassExcercise', async () => {
 
     });
 
-    it('go to prihlasky a vypis vsechny radky tabulky', async () => {
+});
 
-        await browser.reloadSession();
+describe ('Prihlaseny user - prihlasky', async () => {
+
+    beforeEach 
+   it('go to prihlasky a vypis vsechny radky tabulky', async () => {
+
+        //await browser.reloadSession();
 
         await browser.url('/prihlaseni');
 
@@ -59,7 +60,9 @@ describe ('ClassExcercise', async () => {
         await browser.pause(5000);
 
     });
+});
 
+describe ('Log out', async () => {    
     it('odhlas se', async () => {
 
         await browser.reloadSession();
