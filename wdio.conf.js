@@ -11,6 +11,7 @@ export const config = {
         test: ['./test/specs/test/**/*.e2e.js'],
         exercise: ['./test/specs/exercise.e2e.js'],
         homework: ['./test/specs/homework/*.e2e.js'],
+        homework: ['./test/specs/ukol/*.e2e.js'],
         lesson_01: ['./test/specs/examples/lesson-01/**/*.e2e.js'],
         lesson_02: ['./test/specs/examples/lesson-02/**/*.e2e.js'],
         lesson_03: ['./test/specs/examples/lesson-03/**/*.e2e.js'],

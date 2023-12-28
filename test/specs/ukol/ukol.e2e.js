@@ -1,8 +1,8 @@
 import {username, password} from './fixtures.js'
 
 describe('Login page', async () => {
- beforeEach ('bezi pred kazdym testem', async () => {
-
+ beforeEach (async () => {
+        console.log('bezi pred kazdym testem')
         await browser.reloadSession();
         await browser.url('/prihlaseni');
         const PrihlasitButton = $('.btn-primary')
