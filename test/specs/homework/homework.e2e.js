@@ -1,4 +1,4 @@
-import {username, password} from './fixtures.js'
+import {username, password} from '..fixtures.js'
 
 describe('Login page', async () => {
 
