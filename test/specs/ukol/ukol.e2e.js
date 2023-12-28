@@ -42,13 +42,13 @@ describe('Registration page', async () => {
             }
        
        
-        await browser.pause(500);
+        //await browser.pause(500);
         const navitem = $('.navbar-right')
         const text = 'Přihlásit'
 
         await userNameDropdown.click();
         await logoutLink.click();
-        await browser.pause(500);
+        //await browser.pause(500);
         let button =navitem.getText()
             if(button=text) {
                 console.log('Odhlášení proběhlo úspěšně')
@@ -61,7 +61,7 @@ describe('Registration page', async () => {
      it('should return error as email is already registered', async () => {
         console.log('2. test - invalid registration - already registered email')
 
-        await browser.url('/registrace');
+        //await browser.url('/registrace');
         const name = 'Lišák Admin'
         const email = 'da-app.admin@czechitas.cz'
         const password2 = 'Czechitas123'
@@ -82,12 +82,21 @@ describe('Registration page', async () => {
         $('.invalid-feedback').waitForDisplayed;
         console.log(await error.getText());
         
+        const navbarRight = $('.navbar-right')
+        const text = 'Přihlásit'
+        await expect(await navbarRight.getText()).toEqual(text)
+        let button =navbarRight.getText()
+            if(button=text) {
+                console.log('Registrace nebyla dokončena')
+            } else {
+                console.log('Chyba')
+        }
  
      });
 
      it('should return error for invalid password used', async () => {
         console.log('3. test - invalid registration - invalid password used')
-        await browser.url('/registrace');
+       // await browser.url('/registrace');
          
         const unique= Date.now();
         const name = 'Test'+ unique + 'Test'
@@ -110,6 +119,14 @@ describe('Registration page', async () => {
         $('.invalid-feedback').waitForDisplayed;
         console.log(await error.getText());
         
-    });
-     
+        const navbarRight = $('.navbar-right')
+        const text = 'Přihlásit'
+        await expect(await navbarRight.getText()).toEqual(text);
+        let button =navbarRight.getText()
+            if(button=text) {
+                console.log('Registrace nebyla dokončena')
+            } else {
+                console.log('Chyba')
+         }
+        });
 });
