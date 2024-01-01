@@ -1,7 +1,7 @@
 describe('Registration page', async () => {
 
     beforeEach (async () => {
-        console.log('runs prior each test')
+        console.log('runs before each test - browser opens')
         await browser.url('/registrace')
     });
    
@@ -42,13 +42,12 @@ describe('Registration page', async () => {
             }
        
        
-        //await browser.pause(500);
         const navitem = $('.navbar-right')
         const text = 'Přihlásit'
 
         await userNameDropdown.click();
         await logoutLink.click();
-        //await browser.pause(500);
+
         let button =navitem.getText()
             if(button=text) {
                 console.log('Odhlášení proběhlo úspěšně')
@@ -61,7 +60,6 @@ describe('Registration page', async () => {
      it('should return error as email is already registered', async () => {
         console.log('2. test - invalid registration - already registered email')
 
-        //await browser.url('/registrace');
         const name = 'Lišák Admin'
         const email = 'da-app.admin@czechitas.cz'
         const password2 = 'Czechitas123'
@@ -96,7 +94,6 @@ describe('Registration page', async () => {
 
      it('should return error for invalid password used', async () => {
         console.log('3. test - invalid registration - invalid password used')
-       // await browser.url('/registrace');
          
         const unique= Date.now();
         const name = 'Test'+ unique + 'Test'
@@ -126,7 +123,7 @@ describe('Registration page', async () => {
             if(button=text) {
                 console.log('Registrace nebyla dokončena')
             } else {
-                console.log('Chyba')
+                console.log('Nastala neočekávaná chyba')
          }
         });
 });
